@@ -7,8 +7,8 @@
 #SBATCH --job-name=sbatch-mroptimum
 #SBATCH --mail-type=END
 #SBATCH --mail-user=youremail@domain.com
-#SBATCH --output=/scratch/<netID>/your/preferred/path/demo_%j.out
-#SBATCH --error=/scratch/<netID>/your/preferred/path/demo_%j.err
+#SBATCH --output=/scratch/dnp9357/rbda/nba_downloader/logs/demo_%j.out
+#SBATCH --error=/scratch/dnp9357/rbda/nba_downloader/logs/demo_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue
 
