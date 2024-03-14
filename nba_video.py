@@ -55,7 +55,7 @@ def download_nba_video(gameID, eventID, date):
             json_data = response.json()
             uuid = json_data['resultSets']['Meta']['videoUrls'][0]['uuid']
 
-            final_video_url = 'https://videos.nba.com/nba/pbp/media/'+ date +'/' + gameID + '/' + eventID+'/' + uuid + '_1280x720.mp4'
+            final_video_url = 'https://videos.nba.com/nba/pbp/media/'+ date +'/' + str(gameID) + '/' + str(eventID)+'/' + uuid + '_1280x720.mp4'
 
             # Download the video
             video_response = requests.get(final_video_url, allow_redirects=True)
