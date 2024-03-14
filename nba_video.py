@@ -59,7 +59,7 @@ def download_nba_video(gameID, eventID, date):
 
             # Download the video
             video_response = requests.get(final_video_url, allow_redirects=True)
-            with open(f'/scratch/dnp9357/rbda/dataset/{ str(gameID) + '-' + str(eventID) }.mp4'), 'wb') as f:
+            with open(f"/scratch/dnp9357/rbda/dataset/{ str(gameID) + '-' + str(eventID) }.mp4", 'wb') as f:
                 f.write(video_response.content)
 
             print('Video download complete!')
