@@ -47,9 +47,11 @@ def download_nba_video(gameID, eventID, date):
 
     found = False
     i=0
-    while((not found) or (i<5)):
+    while(not found)):
         try:
-            response = requests.get(video_url, headers=headers, params={'GameEventID': eventID, 'GameID': gameID}, timeout=6)
+            if(i>=8):
+                break
+            response = requests.get(video_url, headers=headers, params={'GameEventID': eventID, 'GameID': gameID}, timeout=20)
             response.raise_for_status()  # Raise an exception for error status codes
 
             json_data = response.json()
@@ -59,17 +61,17 @@ def download_nba_video(gameID, eventID, date):
 
             # Download the video
             video_response = requests.get(final_video_url, allow_redirects=True)
-            with open(f"/scratch/dnp9357/rbda/dataset/{ str(gameID) + '-' + str(eventID) }.mp4", 'wb') as f:
+            with open(f"./dls/{ str(gameID) + '-' + str(eventID) }.mp4", 'wb') as f:
                 f.write(video_response.content)
 
             print('Video download complete!')
             found = True
             return final_video_url  # Return the URL for convenience
 
-        except (requests.exceptions.HTTPError, json.decoder.JSONDecodeError, IndexError):
-            print('Error: Could not download the video.')
+        except Exception as e:
+            print(f'Error: Could not download the video in try {i}. {e}')
             i+=1
-            return None  # Indicate failure
+            # return None  # Indicate failure
 
 # Example usage:
 if __name__ == "__main__":    
