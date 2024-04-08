@@ -32,7 +32,7 @@ for game in playDict:
 
     for action in actions:
         action_type = action["actionType"]
-        if action_type=="Missed Shot" or action_type =="Made Shot":
+        if action_type =="Made Shot":
             event_id = action["actionNumber"]
             date = getDate(game)
             
@@ -40,6 +40,5 @@ for game in playDict:
             url = download_nba_video(game, event_id, date)
             if(url):
                 print("Video downloaded successfully. URL:", url)
-    break
     games_downloaded+=1
 
