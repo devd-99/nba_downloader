@@ -32,7 +32,7 @@ for game in playDict:
 
     for action in actions:
         action_type = action["actionType"]
-        if action_type =="Made Shot":
+        if action_type =="Missed Shot":
             event_id = action["actionNumber"]
             date = getDate(game)
             
